@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by guoxiaotian on 2017/5/4.
  */
 
-@Document
+@Document(collection = "friendMsg")
 public class AddFriendMsg implements Serializable{
 
     @Id

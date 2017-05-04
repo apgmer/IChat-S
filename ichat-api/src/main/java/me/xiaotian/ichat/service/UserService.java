@@ -45,7 +45,7 @@ public interface UserService {
      * @param name
      * @return
      */
-    List<UserEntity> searchByName(String name);
+    Set<UserEntityO> searchByName(String name);
 
     /**
      * 心跳。保持用户在线
@@ -66,5 +66,12 @@ public interface UserService {
      * @return
      */
     Long getOnlineSize();
+
+    /**
+     * 更新用户
+     * @param userEntity
+     * @return
+     */
+    UserEntity updateUser(UserEntity userEntity);
 
 }

@@ -2,6 +2,7 @@ package me.xiaotian.ichat.repository;
 
 import me.xiaotian.ichat.entity.AddFriendMsg;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -25,7 +26,9 @@ public interface FriendMsgRepository extends MongoRepository<AddFriendMsg, Strin
      * @param desId
      * @return
      */
-    AddFriendMsg findAddFriendMsgsBySrcIdAndDesIdAndStatus(@Param("srcId") String srcId, @Param("desId") String desId);
+//    @Query("{srcId:?0,desId:?1}")
+    AddFriendMsg findAddFriendMsgsBySrcIdAndDesId( String srcId, String desId);
+
 
 
 }

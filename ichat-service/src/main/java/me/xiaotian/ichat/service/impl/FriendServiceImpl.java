@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -25,8 +26,8 @@ public class FriendServiceImpl implements FriendService {
     private UserService userService;
 
     public boolean reqAddFriend(String srcuid, String desuid) {
-        AddFriendMsg oldMsg = friendMsgRepository.findAddFriendMsgsBySrcIdAndDesIdAndStatus(srcuid, desuid);
-        if (oldMsg != null && !oldMsg.getStatus().equals(ADDFRIENDSTATUS.SEEDING)) {
+        AddFriendMsg oldMsg = friendMsgRepository.findAddFriendMsgsBySrcIdAndDesId(srcuid, desuid);
+        if (oldMsg == null) {
             AddFriendMsg friendMsg = new AddFriendMsg();
             friendMsg.setSrcId(srcuid);
             friendMsg.setDesId(desuid);
@@ -38,14 +39,18 @@ public class FriendServiceImpl implements FriendService {
         }
     }
 
-    public boolean replyReq(String nowuid, String friendid, String status) {
-        AddFriendMsg friendMsg = friendMsgRepository.findAddFriendMsgsBySrcIdAndDesIdAndStatus(friendid, nowuid);
-        friendMsg.setStatus(status);
-
+    public boolean replyReq(String msgId, String status) {
+        AddFriendMsg friendMsg = friendMsgRepository.findOne(msgId);
+        if (status.equals(ADDFRIENDSTATUS.ACCEPT )|| status.equals(ADDFRIENDSTATUS.SEEDING) || status.equals(ADDFRIENDSTATUS.REJECT) ){
+            friendMsg.setStatus(status);
+        }
         if (status.equals(ADDFRIENDSTATUS.ACCEPT)){
-            UserEntity nowUser = userService.getUserById(nowuid);
-            nowUser.getFriends().add(friendid);
-            userService.register(nowUser);
+            UserEntity nowUser = userService.getUserById(friendMsg.getDesId());
+            if (null == nowUser.getFriends()){
+                nowUser.setFriends(new HashSet<String>());
+            }
+            nowUser.getFriends().add(friendMsg.getSrcId());
+            userService.updateUser(nowUser);
         }
 
         return this.saveOne(friendMsg);

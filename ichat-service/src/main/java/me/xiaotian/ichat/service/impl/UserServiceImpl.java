@@ -32,6 +32,9 @@ public class UserServiceImpl implements UserService{
 
     public UserEntity login(String name, String pass) {
         UserEntity u = userRepository.findByName(name);
+        if (null == u){
+            return null;
+        }
         if (PasswordUtil.isEqual(pass,u.getPass())){
             if (saveUserToRedis(u)){
                 return u;
@@ -43,8 +46,24 @@ public class UserServiceImpl implements UserService{
         }
     }
 
-    public List<UserEntity> searchByName(String name){
-        return userRepository.findByNameLike(name);
+    public Set<UserEntityO> searchByName(String name){
+        List<UserEntity> userlist = userRepository.findByNameLike(name);
+        if (userlist.size() == 0){
+            return null;
+        }
+        Set<UserEntityO> uos = new HashSet<UserEntityO>();
+        UserEntityO uo = null;
+        for (UserEntity u: userlist){
+            uo = new UserEntityO();
+            uo.setUserinfo(u);
+            if (redisService.exists(u.getId())){
+                uo.setStatus(USERSTATUS.ONLINE);
+            }else{
+                uo.setStatus(USERSTATUS.OFFLINE);
+            }
+            uos.add(uo);
+        }
+        return uos;
     }
 
     public UserEntity getUserById(String id){
@@ -56,6 +75,11 @@ public class UserServiceImpl implements UserService{
     }
 
     public UserEntity register(UserEntity userEntity){
+        UserEntity oldUser = userRepository.findByName(userEntity.getName());
+        if (null != oldUser){
+            return null;
+        }
+        userEntity.setPass(PasswordUtil.generatePass(userEntity.getPass()));
         return userRepository.save(userEntity);
     }
 
@@ -91,6 +115,10 @@ public class UserServiceImpl implements UserService{
 
     public Long getOnlineSize(){
         return redisService.dbSize();
+    }
+
+    public UserEntity updateUser(UserEntity userEntity){
+        return userRepository.save(userEntity);
     }
 
     private boolean saveUserToRedis(UserEntity u){

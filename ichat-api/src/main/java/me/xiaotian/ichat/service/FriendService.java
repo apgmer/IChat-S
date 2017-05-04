@@ -28,11 +28,11 @@ public interface FriendService {
      *               不同意: reject
      * @return
      */
-    boolean replyReq(String nowuid, String fiendid, String status);
+    boolean replyReq(String msgId, String status);
 
 
     /**
-     * 查询自己发起的请求
+     * 查询发给自己的请求
      * @param nowid
      * @return
      */
