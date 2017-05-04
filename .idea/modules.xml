@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ichat-api/ichat-api.iml" filepath="$PROJECT_DIR$/ichat-api/ichat-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ichat-common/ichat-common.iml" filepath="$PROJECT_DIR$/ichat-common/ichat-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ichat-parent.iml" filepath="$PROJECT_DIR$/ichat-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ichat-service/ichat-service.iml" filepath="$PROJECT_DIR$/ichat-service/ichat-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ichat-web/ichat-web.iml" filepath="$PROJECT_DIR$/ichat-web/ichat-web.iml" />
+    </modules>
+  </component>
+</project>
