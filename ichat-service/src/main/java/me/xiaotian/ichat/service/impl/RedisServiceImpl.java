@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by guoxiaotian on 2017/5/4.
@@ -125,5 +123,29 @@ public class RedisServiceImpl implements RedisService {
             cols.add(key);
         }
         return this.delete(cols);
+    }
+
+    public Long dbSize() {
+        return redisTemplate.execute(new RedisCallback<Long>() {
+            public Long doInRedis(RedisConnection connection) throws DataAccessException {
+                return connection.dbSize();
+            }
+        });
+    }
+
+    public List<String> getAllKeys() {
+        return redisTemplate.execute(new RedisCallback<List<String>>() {
+            public List<String> doInRedis(RedisConnection connection) throws DataAccessException {
+                Set<byte[]> redisKeys = connection.keys("*".getBytes());
+                List<String> keysList = new ArrayList<String>();
+                Iterator<byte[]> it = redisKeys.iterator();
+                while (it.hasNext()) {
+                    byte[] data = (byte[])it.next();
+                    keysList.add(new String(data, 0, data.length));
+                }
+
+                return keysList;
+            }
+        });
     }
 }

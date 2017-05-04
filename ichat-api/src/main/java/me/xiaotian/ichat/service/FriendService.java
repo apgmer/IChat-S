@@ -38,5 +38,4 @@ public interface FriendService {
      */
     List<AddFriendMsg> getMsg(String nowid);
 
-
 }

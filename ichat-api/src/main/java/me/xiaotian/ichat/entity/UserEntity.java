@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by guoxiaotian on 2017/5/4.
@@ -17,13 +17,13 @@ public class UserEntity implements Serializable{
 
     private String name;
     private String pass;
-    private List<String> friends;
+    private Set<String> friends;
 
     public UserEntity(){
 
     }
 
-    public UserEntity(String id, String name, String pass, List<String> friends) {
+    public UserEntity(String id, String name, String pass, Set<String> friends) {
         this.id = id;
         this.name = name;
         this.pass = pass;
@@ -54,21 +54,11 @@ public class UserEntity implements Serializable{
         this.pass = pass;
     }
 
-    public List<String> getFriends() {
+    public Set<String> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<String> friends) {
+    public void setFriends(Set<String> friends) {
         this.friends = friends;
-    }
-
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", pass='" + pass + '\'' +
-                ", friends=" + friends +
-                '}';
     }
 }

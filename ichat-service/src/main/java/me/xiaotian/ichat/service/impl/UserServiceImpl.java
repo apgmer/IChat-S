@@ -1,7 +1,9 @@
 package me.xiaotian.ichat.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.xiaotian.ichat.common.USERSTATUS;
 import me.xiaotian.ichat.entity.UserEntity;
+import me.xiaotian.ichat.entity.UserEntityO;
 import me.xiaotian.ichat.repository.UserRepository;
 import me.xiaotian.ichat.service.RedisService;
 import me.xiaotian.ichat.service.UserService;
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -39,6 +43,10 @@ public class UserServiceImpl implements UserService{
         }
     }
 
+    public List<UserEntity> searchByName(String name){
+        return userRepository.findByNameLike(name);
+    }
+
     public UserEntity getUserById(String id){
         return userRepository.findOne(id);
     }
@@ -49,6 +57,40 @@ public class UserServiceImpl implements UserService{
 
     public UserEntity register(UserEntity userEntity){
         return userRepository.save(userEntity);
+    }
+
+    public boolean keepOnline(String uid){
+        UserEntity userEntity = toEntity(redisService.get(uid));
+        return this.saveUserToRedis(userEntity);
+    }
+
+    public Set<UserEntityO>  getFriendInfoByUserid(String uid){
+        UserEntity me = userRepository.findOne(uid);
+        Set<String> friendStr = me.getFriends();
+        Set<UserEntityO> friendSet = null;
+        if (friendStr.size() == 0 || null == friendStr){
+            return null;
+        }else{
+            friendSet = new HashSet<UserEntityO>();
+            UserEntityO fo = null;
+            for(String friendid:friendStr){
+                fo = new UserEntityO();
+                UserEntity f = userRepository.findOne(friendid);
+                fo.setUserinfo(f);
+                if (redisService.exists(f.getId())){
+                    fo.setStatus(USERSTATUS.ONLINE);
+                }else{
+                    fo.setStatus(USERSTATUS.OFFLINE);
+                }
+                friendSet.add(fo);
+            }
+        }
+        return friendSet;
+//        List<UserEntity> friends = userRepository.find
+    }
+
+    public Long getOnlineSize(){
+        return redisService.dbSize();
     }
 
     private boolean saveUserToRedis(UserEntity u){
@@ -63,6 +105,16 @@ public class UserServiceImpl implements UserService{
 
     private String toJson(Object object) throws IOException {
         return new ObjectMapper().writeValueAsString(object);
+    }
+
+    private UserEntity toEntity(String jsonStr){
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(jsonStr,UserEntity.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 

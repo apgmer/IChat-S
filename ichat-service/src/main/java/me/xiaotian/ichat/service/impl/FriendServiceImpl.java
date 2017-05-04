@@ -2,8 +2,10 @@ package me.xiaotian.ichat.service.impl;
 
 import me.xiaotian.ichat.common.ADDFRIENDSTATUS;
 import me.xiaotian.ichat.entity.AddFriendMsg;
+import me.xiaotian.ichat.entity.UserEntity;
 import me.xiaotian.ichat.repository.FriendMsgRepository;
 import me.xiaotian.ichat.service.FriendService;
+import me.xiaotian.ichat.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,6 +20,9 @@ public class FriendServiceImpl implements FriendService {
 
     @Resource
     private FriendMsgRepository friendMsgRepository;
+
+    @Resource
+    private UserService userService;
 
     public boolean reqAddFriend(String srcuid, String desuid) {
         AddFriendMsg oldMsg = friendMsgRepository.findAddFriendMsgsBySrcIdAndDesIdAndStatus(srcuid, desuid);
@@ -36,6 +41,13 @@ public class FriendServiceImpl implements FriendService {
     public boolean replyReq(String nowuid, String friendid, String status) {
         AddFriendMsg friendMsg = friendMsgRepository.findAddFriendMsgsBySrcIdAndDesIdAndStatus(friendid, nowuid);
         friendMsg.setStatus(status);
+
+        if (status.equals(ADDFRIENDSTATUS.ACCEPT)){
+            UserEntity nowUser = userService.getUserById(nowuid);
+            nowUser.getFriends().add(friendid);
+            userService.register(nowUser);
+        }
+
         return this.saveOne(friendMsg);
     }
 
@@ -49,6 +61,7 @@ public class FriendServiceImpl implements FriendService {
         }
         return newMsg;
     }
+
 
     private boolean saveOne(AddFriendMsg friendMsg) {
         try {

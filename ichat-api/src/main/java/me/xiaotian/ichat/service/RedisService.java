@@ -1,6 +1,7 @@
 package me.xiaotian.ichat.service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -94,5 +95,17 @@ public interface RedisService {
      * </pre>
      */
     boolean flushDB();
+
+    /**
+     * 查看有多少条数据
+     * @return
+     */
+    Long dbSize();
+
+    /**
+     * 获取所有的key
+     * @return
+     */
+    List<String> getAllKeys();
 
 }

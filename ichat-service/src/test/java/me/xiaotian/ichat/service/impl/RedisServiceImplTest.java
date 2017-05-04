@@ -1,20 +1,17 @@
 package me.xiaotian.ichat.service.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import junit.framework.TestCase;
-import me.xiaotian.ichat.entity.UserEntity;
-
 import me.xiaotian.ichat.service.RedisService;
-import me.xiaotian.ichat.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Set;
+
+import static org.junit.Assert.*;
 
 /**
  * Created by guoxiaotian on 2017/5/4.
@@ -22,14 +19,22 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/META-INF/spring/spring-dao.xml"})
-public class UserServiceImplTest extends TestCase {
-
+public class RedisServiceImplTest {
 
     @Resource
     private RedisService redisService;
 
-    @Resource
-    private UserService userService;
+    @Test
+    public void getAllKeys() throws Exception {
 
+        List<String> keys = redisService.getAllKeys();
+        System.out.println(keys);
+
+    }
+
+    @Test
+    public void clearRedis() throws Exception{
+        redisService.flushDB();
+    }
 
 }
