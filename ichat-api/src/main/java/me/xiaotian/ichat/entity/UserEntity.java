@@ -3,13 +3,14 @@ package me.xiaotian.ichat.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by guoxiaotian on 2017/5/4.
  */
 @Document(collection = "user")
-public class UserEntity {
+public class UserEntity implements Serializable{
 
     @Id
     private String id;

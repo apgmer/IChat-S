@@ -9,10 +9,10 @@ import java.util.List;
  */
 public interface UserService {
 
-    UserEntity userLogin(String name, String pass);
+    UserEntity login(String name, String pass);
 
     List<UserEntity> queryAllUser();
 
-    Object saveOne(UserEntity userEntity);
+    UserEntity register(UserEntity userEntity);
 
 }
