@@ -41,12 +41,16 @@ public class FriendServiceImpl implements FriendService {
 
     public boolean replyReq(String msgId, String status) {
         AddFriendMsg friendMsg = friendMsgRepository.findOne(msgId);
-        if (status.equals(ADDFRIENDSTATUS.ACCEPT )|| status.equals(ADDFRIENDSTATUS.SEEDING) || status.equals(ADDFRIENDSTATUS.REJECT) ){
+        if (
+                status.equals(ADDFRIENDSTATUS.ACCEPT) ||
+                        status.equals(ADDFRIENDSTATUS.SEEDING) ||
+                        status.equals(ADDFRIENDSTATUS.REJECT) ||
+                        status.equals(ADDFRIENDSTATUS.DONE)) {
             friendMsg.setStatus(status);
         }
-        if (status.equals(ADDFRIENDSTATUS.ACCEPT)){
+        if (status.equals(ADDFRIENDSTATUS.ACCEPT)) {
             UserEntity nowUser = userService.getUserById(friendMsg.getDesId());
-            if (null == nowUser.getFriends()){
+            if (null == nowUser.getFriends()) {
                 nowUser.setFriends(new HashSet<String>());
             }
             nowUser.getFriends().add(friendMsg.getSrcId());
@@ -58,15 +62,42 @@ public class FriendServiceImpl implements FriendService {
 
     public List<AddFriendMsg> getMsg(String nowid) {
         List<AddFriendMsg> oldMsg = friendMsgRepository.findAddFriendMsgsByDesId(nowid);
+        if (null == oldMsg || oldMsg.size() == 0) {
+            return null;
+        }
         List<AddFriendMsg> newMsg = new ArrayList<AddFriendMsg>();
-        for (AddFriendMsg n:oldMsg){
-            if (n.getStatus().equals(ADDFRIENDSTATUS.SEEDING)){
+        for (AddFriendMsg n : oldMsg) {
+            if (n.getStatus().equals(ADDFRIENDSTATUS.SEEDING)) {
                 newMsg.add(n);
             }
         }
         return newMsg;
     }
 
+    public List<AddFriendMsg> getReqMsg(String uid) {
+        List<AddFriendMsg> oldMsg = friendMsgRepository.findAddFriendMsgsBySrcId(uid);
+        if (null == oldMsg || oldMsg.size() == 0) {
+            return null;
+        }
+        List<AddFriendMsg> newMsg = new ArrayList<AddFriendMsg>();
+        for (int i = 0; i < oldMsg.size(); i++) {
+            AddFriendMsg afm = oldMsg.get(i);
+            if (!(afm.getStatus().equals(ADDFRIENDSTATUS.DONE))) {
+                newMsg.add(afm);
+            }
+        }
+        return newMsg;
+    }
+
+    public boolean setMsgDone(String uid, String msgid) {
+        AddFriendMsg afm = friendMsgRepository.findOne(msgid);
+        if (afm.getSrcId().equals(uid)){
+            afm.setStatus(ADDFRIENDSTATUS.DONE);
+            return this.saveOne(afm);
+        }else{
+            return false;
+        }
+    }
 
     private boolean saveOne(AddFriendMsg friendMsg) {
         try {

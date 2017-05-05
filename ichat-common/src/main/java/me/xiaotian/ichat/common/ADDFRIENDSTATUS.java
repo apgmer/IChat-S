@@ -8,5 +8,6 @@ public final class ADDFRIENDSTATUS {
     public static final String ACCEPT = "ACCEPT"; //接受
     public static final String REJECT = "REJECT"; //拒绝
     public static final String SEEDING = "SEEDING"; //已经发送
+    public static final String DONE = "DONE"; //完成，无论接受拒绝
 
 }

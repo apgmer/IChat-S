@@ -19,6 +19,12 @@ public interface FriendMsgRepository extends MongoRepository<AddFriendMsg, Strin
      */
     List<AddFriendMsg> findAddFriendMsgsByDesId(@Param("desId") String desId);
 
+    /**
+     * 查询自己发起的通知
+     * @param srcId
+     * @return
+     */
+    List<AddFriendMsg> findAddFriendMsgsBySrcId(@Param("srcId") String srcId);
 
     /**
      * 查询具体通知

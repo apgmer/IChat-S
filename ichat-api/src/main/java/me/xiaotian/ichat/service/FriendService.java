@@ -21,8 +21,7 @@ public interface FriendService {
 
     /**
      * 处理好友请求
-     * @param nowuid 当前用户id
-     * @param fiendid 朋友id 发起请求id
+     * @param msgId msgid
      * @param status 同意，不同意
      *               同意：status=accept
      *               不同意: reject
@@ -37,5 +36,21 @@ public interface FriendService {
      * @return
      */
     List<AddFriendMsg> getMsg(String nowid);
+
+    /**
+     * 查询自己发送的请求
+     * @param uid 用户id
+     * @return
+     */
+    List<AddFriendMsg> getReqMsg(String uid);
+
+
+    /**
+     * 将消息设置为完成
+     * @param uid
+     * @param msgid
+     * @return
+     */
+    boolean setMsgDone(String uid, String msgid);
 
 }
