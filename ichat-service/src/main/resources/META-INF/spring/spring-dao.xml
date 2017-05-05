@@ -28,7 +28,8 @@
     </bean>
 
     <mongo:repositories base-package="me.xiaotian.ichat" />
-    <bean id="jedisConnFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" p:use-pool="true">
+    <bean id="jedisConnFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="usePool" value="true"/>
         <property name="hostName" value="${redis.host}" />
         <property name="port" value="${redis.port}" />
         <property name="password" value="${redis.pass}" />

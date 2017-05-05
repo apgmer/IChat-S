@@ -96,11 +96,12 @@ public class UserServiceImpl implements UserService{
 
     public Set<UserEntityO>  getFriendInfoByUserid(String uid){
         UserEntity me = userRepository.findOne(uid);
-        Set<String> friendStr = me.getFriends();
+
         Set<UserEntityO> friendSet = null;
-        if (friendStr.size() == 0 || null == friendStr){
+        if (null == me.getFriends()){
             return null;
         }else{
+            Set<String> friendStr = me.getFriends();
             friendSet = new HashSet<UserEntityO>();
             UserEntityO fo = null;
             for(String friendid:friendStr){

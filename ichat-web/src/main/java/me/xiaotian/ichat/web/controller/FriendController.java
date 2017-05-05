@@ -81,7 +81,7 @@ public class FriendController {
      * @param uid
      * @return
      */
-    @RequestMapping(value = "/getfriends", method = RequestMethod.GET)
+    @RequestMapping(value = "/getfriends", method = {RequestMethod.GET,RequestMethod.POST})
     @ResponseBody
     public Map<String ,Object> getFriends(@RequestParam("uid") String uid){
         resultMap = new ResultMap();
