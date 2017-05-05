@@ -20,7 +20,7 @@ import java.util.Set;
 @RequestMapping(value = "/api")
 public class UserController {
 
-    private ResultMap resultMap = new ResultMap();
+    private ResultMap resultMap = null;
 
     @Resource
     private UserService userService;
@@ -34,6 +34,7 @@ public class UserController {
     @ResponseBody
     public Map<String,Object> login(@RequestBody UserEntity userEntity){
         UserEntity newUser = userService.login(userEntity.getName(),userEntity.getPass());
+        resultMap = new ResultMap();
         if (null != newUser){
             List<UserEntity> userEntities = new ArrayList<UserEntity>();
             userEntities.add(newUser);
@@ -55,6 +56,7 @@ public class UserController {
     @ResponseBody
     public Map<String ,Object> register(@RequestBody UserEntity userEntity){
         UserEntity newUser = userService.register(userEntity);
+        resultMap = new ResultMap();
         if (null != newUser){
             resultMap.setStatus(true);
             List<UserEntity> userEntities = new ArrayList<UserEntity>();
@@ -75,6 +77,7 @@ public class UserController {
     @RequestMapping(value = "/user/search",method = {RequestMethod.GET})
     @ResponseBody
     public Map<String, Object> searchUser(@RequestParam("name") String name){
+        resultMap = new ResultMap();
         Set<UserEntityO> userList = userService.searchByName(name);
         if (null != userList){
             resultMap.setStatus(true);
@@ -82,6 +85,20 @@ public class UserController {
         }else{
             resultMap.setStatus(false);
         }
+        return resultMap.getResMap();
+    }
+
+    /**
+     * 保持用户在线
+     * @param uid
+     * @return
+     */
+    @RequestMapping(value = "/user/keepOnline",method = {RequestMethod.GET})
+    @ResponseBody
+    public Map<String, Object> keepOnline(@RequestParam("uid")String uid){
+        resultMap = new ResultMap();
+        boolean flag = userService.keepOnline(uid);
+        resultMap.setStatus(flag);
         return resultMap.getResMap();
     }
 

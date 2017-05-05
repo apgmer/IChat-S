@@ -84,8 +84,14 @@ public class UserServiceImpl implements UserService{
     }
 
     public boolean keepOnline(String uid){
-        UserEntity userEntity = toEntity(redisService.get(uid));
+        UserEntity userEntity = null;
+        if(redisService.exists(uid)){
+            userEntity = toEntity(redisService.get(uid));
+        }else {
+            userEntity = userRepository.findOne(uid);
+        }
         return this.saveUserToRedis(userEntity);
+
     }
 
     public Set<UserEntityO>  getFriendInfoByUserid(String uid){

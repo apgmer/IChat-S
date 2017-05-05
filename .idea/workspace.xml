@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2af3643-e9cb-46b2-977c-42cf0bf13136" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/FriendService.java" afterPath="$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/FriendService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ichat-common/src/main/java/me/xiaotian/ichat/common/ADDFRIENDSTATUS.java" afterPath="$PROJECT_DIR$/ichat-common/src/main/java/me/xiaotian/ichat/common/ADDFRIENDSTATUS.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/repository/FriendMsgRepository.java" afterPath="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/repository/FriendMsgRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/FriendServiceImpl.java" afterPath="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/FriendServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/FriendController.java" afterPath="$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/FriendController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/UserServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/UserController.java" afterPath="$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/UserController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/ichat-web/target/" />
     <ignored path="$PROJECT_DIR$/ichat-common/target/" />
@@ -29,12 +26,35 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="711">
-              <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="23" />
+            <state relative-caret-position="939">
+              <caret line="99" column="40" lean-forward="true" selection-start-line="99" selection-start-column="40" selection-end-line="99" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1087#1099#0" expanded="true" />
-                <element signature="e#1761#1773#0" expanded="true" />
+                <element signature="e#1113#1125#0" expanded="true" />
+                <element signature="e#1824#1836#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="509">
+              <caret line="54" column="12" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/UserServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="129" column="20" lean-forward="false" selection-start-line="129" selection-start-column="20" selection-end-line="129" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1461#1474#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,50 +92,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FriendServiceImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FriendServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/FriendServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+            <state relative-caret-position="1634">
+              <caret line="86" column="13" lean-forward="true" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2427#2441#0" expanded="true" />
                 <element signature="e#2912#2926#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FriendMsgRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/repository/FriendMsgRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
-              <caret line="61" column="42" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="90" column="50" lean-forward="false" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1461#1474#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -173,15 +158,15 @@
         <option value="$PROJECT_DIR$/ichat-web/src/main/resources/spring/spring-mvc-config.xml" />
         <option value="$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/common/ResultMap.java" />
         <option value="$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/HomeController.java" />
-        <option value="$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/UserController.java" />
         <option value="$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/entity/AddFriendMsg.java" />
         <option value="$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/UserService.java" />
-        <option value="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/ichat-common/src/main/java/me/xiaotian/ichat/common/ADDFRIENDSTATUS.java" />
         <option value="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/repository/FriendMsgRepository.java" />
         <option value="$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/FriendService.java" />
         <option value="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/FriendServiceImpl.java" />
         <option value="$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/FriendController.java" />
+        <option value="$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/UserServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -1198,7 +1183,7 @@
       <option name="presentableId" value="Default" />
       <updated>1493883165391</updated>
       <workItem from="1493883166717" duration="25646000" />
-      <workItem from="1493951142195" duration="5663000" />
+      <workItem from="1493951142195" duration="6296000" />
     </task>
     <servers />
   </component>
@@ -1214,7 +1199,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31309000" />
+    <option name="totallyTimeSpent" value="31942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="2556" height="1417" extended-state="6" />
@@ -1232,7 +1217,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3903542" sideWeight="0.49681783" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3903542" sideWeight="0.49681783" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931423" sideWeight="0.4984089" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1240,7 +1225,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931423" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18236624" sideWeight="0.4984089" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18236624" sideWeight="0.4984089" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16229117" sideWeight="0.4958592" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1323,6 +1308,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="45" column="6" lean-forward="true" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1413,6 +1399,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="38" column="30" lean-forward="false" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1441,14 +1428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="37" column="6" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/RedisService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1786">
-          <caret line="96" column="12" lean-forward="false" selection-start-line="96" selection-start-column="12" selection-end-line="96" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1517,13 +1496,13 @@
         <state relative-caret-position="418">
           <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#225#226#0" expanded="true" />
-            <element signature="e#284#285#0" expanded="true" />
-            <element signature="e#415#416#0" expanded="true" />
-            <element signature="e#458#459#0" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#225#226#0" expanded="false" />
+            <element signature="e#284#285#0" expanded="false" />
+            <element signature="e#415#416#0" expanded="false" />
+            <element signature="e#458#459#0" expanded="false" />
+            <element signature="e#503#504#0" expanded="false" />
+            <element signature="e#537#538#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1533,7 +1512,7 @@
         <state relative-caret-position="304">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1562,14 +1541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="61" column="42" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ichat-common/src/main/java/me/xiaotian/ichat/common/ADDFRIENDSTATUS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1585,39 +1556,6 @@
           <folding>
             <element signature="imports" expanded="false" />
             <element signature="e#4427#4435#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1087#1099#0" expanded="true" />
-            <element signature="e#1761#1773#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/repository/FriendMsgRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="90" column="50" lean-forward="false" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1461#1474#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1656,14 +1594,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/repository/FriendMsgRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/FriendServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+        <state relative-caret-position="1634">
+          <caret line="86" column="13" lean-forward="true" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2427#2441#0" expanded="true" />
             <element signature="e#2912#2926#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ichat-web/src/main/java/me/xiaotian/ichat/web/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="939">
+          <caret line="99" column="40" lean-forward="true" selection-start-line="99" selection-start-column="40" selection-end-line="99" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1113#1125#0" expanded="true" />
+            <element signature="e#1824#1836#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="54" column="12" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ichat-api/src/main/java/me/xiaotian/ichat/service/RedisService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="89" column="12" lean-forward="false" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ichat-service/src/main/java/me/xiaotian/ichat/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="129" column="20" lean-forward="false" selection-start-line="129" selection-start-column="20" selection-end-line="129" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1461#1474#0" expanded="true" />
           </folding>
         </state>
       </provider>
