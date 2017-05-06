@@ -50,10 +50,16 @@ public class FriendServiceImpl implements FriendService {
         }
         if (status.equals(ADDFRIENDSTATUS.ACCEPT)) {
             UserEntity nowUser = userService.getUserById(friendMsg.getDesId());
+            UserEntity friend = userService.getUserById(friendMsg.getSrcId());
             if (null == nowUser.getFriends()) {
                 nowUser.setFriends(new HashSet<String>());
             }
+            if (null == friend.getFriends()){
+                friend.setFriends(new HashSet<String>());
+            }
             nowUser.getFriends().add(friendMsg.getSrcId());
+            friend.getFriends().add(friendMsg.getDesId());
+            userService.updateUser(friend);
             userService.updateUser(nowUser);
         }
 

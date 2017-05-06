@@ -30,32 +30,34 @@ public class FriendController {
 
     /**
      * 发送添加朋友请求
+     *
      * @param friendMsg
      * @return
      */
-    @RequestMapping(value = "/addReq",method = RequestMethod.POST)
+    @RequestMapping(value = "/addReq", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> sendAddFriendReq(@RequestBody AddFriendMsg friendMsg){
+    public Map<String, Object> sendAddFriendReq(@RequestBody AddFriendMsg friendMsg) {
         resultMap = new ResultMap();
-        boolean flag = friendService.reqAddFriend(friendMsg.getSrcId(),friendMsg.getDesId());
+        boolean flag = friendService.reqAddFriend(friendMsg.getSrcId(), friendMsg.getDesId());
         resultMap.setStatus(flag);
         return resultMap.getResMap();
     }
 
     /**
      * 获取添加好友通知
+     *
      * @param uid
      * @return
      */
-    @RequestMapping(value = "/getfriendmsg",method = RequestMethod.GET)
+    @RequestMapping(value = "/getfriendmsg", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String ,Object> getfriendMsg(@RequestParam("uid") String uid){
+    public Map<String, Object> getfriendMsg(@RequestParam("uid") String uid) {
         List<AddFriendMsg> msgs = friendService.getMsg(uid);
         resultMap = new ResultMap();
-        if (null != msgs){
+        if (null != msgs) {
             resultMap.setStatus(true);
             resultMap.setData(msgs);
-        }else {
+        } else {
             resultMap.setStatus(false);
         }
         return resultMap.getResMap();
@@ -63,14 +65,15 @@ public class FriendController {
 
     /**
      * 处理添加好友请求
+     *
      * @param friendMsg
      * @return
      */
-    @RequestMapping(value = "/dealfriendmsg",method = RequestMethod.POST)
+    @RequestMapping(value = "/dealfriendmsg", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String ,Object> dealFriendMsg(@RequestBody AddFriendMsg friendMsg){
+    public Map<String, Object> dealFriendMsg(@RequestBody AddFriendMsg friendMsg) {
         resultMap = new ResultMap();
-        boolean flag = friendService.replyReq(friendMsg.getId(),friendMsg.getStatus());
+        boolean flag = friendService.replyReq(friendMsg.getId(), friendMsg.getStatus());
         resultMap.setStatus(flag);
         return resultMap.getResMap();
     }
@@ -78,18 +81,19 @@ public class FriendController {
 
     /**
      * 获取用户好友信息以及在线信息
+     *
      * @param uid
      * @return
      */
-    @RequestMapping(value = "/getfriends", method = {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value = "/getfriends", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public Map<String ,Object> getFriends(@RequestParam("uid") String uid){
+    public Map<String, Object> getFriends(@RequestParam("uid") String uid) {
         resultMap = new ResultMap();
         Set<UserEntityO> friends = userService.getFriendInfoByUserid(uid);
-        if (null != friends){
+        if (null != friends) {
             resultMap.setStatus(true);
             resultMap.setData(friends);
-        }else{
+        } else {
             resultMap.setStatus(false);
         }
         return resultMap.getResMap();
@@ -97,18 +101,19 @@ public class FriendController {
 
     /**
      * 获取自己发起的通知
+     *
      * @param uid
      * @return
      */
-    @RequestMapping(value = "/getNotify", method = RequestMethod.GET)
+    @RequestMapping(value = "/getNotify", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public Map<String ,Object> getNotify(@RequestParam("uid") String uid){
+    public Map<String, Object> getNotify(@RequestParam("uid") String uid) {
         resultMap = new ResultMap();
         List<AddFriendMsg> notify = friendService.getReqMsg(uid);
-        if (null != notify){
+        if (null != notify) {
             resultMap.setStatus(true);
             resultMap.setData(notify);
-        }else{
+        } else {
             resultMap.setStatus(false);
         }
         return resultMap.getResMap();
@@ -116,9 +121,9 @@ public class FriendController {
 
     @RequestMapping(value = "/setNotifyDone", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String ,Object> setNotifyDone(@RequestParam("uid") String uid, @RequestParam("msgid") String msgId){
+    public Map<String, Object> setNotifyDone(@RequestParam("uid") String uid, @RequestParam("msgid") String msgId) {
         resultMap = new ResultMap();
-        boolean flag = friendService.setMsgDone(uid,msgId);
+        boolean flag = friendService.setMsgDone(uid, msgId);
         resultMap.setStatus(flag);
         return resultMap.getResMap();
     }

@@ -102,4 +102,23 @@ public class UserController {
         return resultMap.getResMap();
     }
 
+    /**
+     * 获得用户详情
+     * @param uid
+     * @return
+     */
+    @RequestMapping(value = "/user/findById",method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public Map<String,Object> findUserById(@RequestParam("uid") String uid){
+        resultMap = new ResultMap();
+        UserEntity u = userService.getUserById(uid);
+        if (null != u){
+            resultMap.setStatus(true);
+            resultMap.setData(u);
+        }else{
+            resultMap.setStatus(false);
+        }
+        return resultMap.getResMap();
+    }
+
 }

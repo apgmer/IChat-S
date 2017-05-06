@@ -13,6 +13,7 @@ public interface UserService {
 
     /**
      * 用户登陆，返回用户实体
+     *
      * @param name
      * @param pass
      * @return
@@ -21,6 +22,7 @@ public interface UserService {
 
     /**
      * 查询所有的用户
+     *
      * @return
      */
     List<UserEntity> queryAllUser();
@@ -28,6 +30,7 @@ public interface UserService {
 
     /**
      * 用户注册
+     *
      * @param userEntity
      * @return
      */
@@ -35,6 +38,7 @@ public interface UserService {
 
     /**
      * 根据用户id获取用户
+     *
      * @param id
      * @return
      */
@@ -42,6 +46,7 @@ public interface UserService {
 
     /**
      * 搜索用户
+     *
      * @param name
      * @return
      */
@@ -49,6 +54,7 @@ public interface UserService {
 
     /**
      * 心跳。保持用户在线
+     *
      * @param uid
      * @return
      */
@@ -56,6 +62,7 @@ public interface UserService {
 
     /**
      * 获取用户好友信息以及是否在线
+     *
      * @param uid
      * @return
      */
@@ -63,15 +70,17 @@ public interface UserService {
 
     /**
      * 获取当前在线用户数
+     *
      * @return
      */
     Long getOnlineSize();
 
     /**
      * 更新用户
+     *
      * @param userEntity
      * @return
      */
     UserEntity updateUser(UserEntity userEntity);
-
 }
+
