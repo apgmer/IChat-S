@@ -17,6 +17,7 @@ import java.util.List;
  * Created by guoxiaotian on 2017/5/4.
  */
 @Service
+@com.alibaba.dubbo.config.annotation.Service
 public class FriendServiceImpl implements FriendService {
 
     @Resource

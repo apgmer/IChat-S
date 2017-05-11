@@ -22,6 +22,7 @@ import java.util.Set;
  */
 
 @Service
+@com.alibaba.dubbo.config.annotation.Service
 public class UserServiceImpl implements UserService{
 
     @Resource

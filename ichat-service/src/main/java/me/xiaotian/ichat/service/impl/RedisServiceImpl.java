@@ -17,6 +17,7 @@ import java.util.*;
  */
 
 @Service
+@com.alibaba.dubbo.config.annotation.Service
 public class RedisServiceImpl implements RedisService {
     private static final String CHARSET = "UTF8";
 
