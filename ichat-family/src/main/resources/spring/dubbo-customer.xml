@@ -19,8 +19,8 @@
     <!--<dubbo:reference id="adminService" interface="cn.necl.admin.service.AdminService" />-->
     <!--<dubbo:reference id="adminUserService" interface="cn.necl.admin.service.AdminUserService" />-->
     <!--<dubbo:reference id="adminRegUserService" interface="cn.necl.admin.service.AdminRegUserService" />-->
-    <dubbo:reference id="userService" interface="me.xiaotian.ichat.service.UserService" />
-    <dubbo:reference id="friendService" interface="me.xiaotian.ichat.service.FriendService" />
+    <dubbo:reference id="familyUserService" interface="me.xiaotian.ichat.service.FamilyUserService" />
+    <dubbo:reference id="familyRelaService" interface="me.xiaotian.ichat.service.FamilyRelaService" />
     <dubbo:reference id="redisService" interface="me.xiaotian.ichat.service.RedisService" />
 
     <!--<dubbo:reference id="spiderStatusControlService" interface="cn.necl.spider.service.SpiderStatusControlService" />-->
