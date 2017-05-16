@@ -8,4 +8,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface FamilyUserRepository extends MongoRepository<FamilyUserEntity, String> {
 
+    FamilyUserEntity findByPhone(String phone);
+
 }

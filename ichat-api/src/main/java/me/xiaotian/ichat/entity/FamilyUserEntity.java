@@ -14,16 +14,18 @@ public class FamilyUserEntity implements Serializable {
 
     @Id
     private String id;
-    private String name;
+    private String phone;
     private String pass;
+    private String familyId;
 
     public FamilyUserEntity() {
     }
 
-    public FamilyUserEntity(String id, String name, String pass) {
+    public FamilyUserEntity(String id, String phone, String pass, String familyId) {
         this.id = id;
-        this.name = name;
+        this.phone = phone;
         this.pass = pass;
+        this.familyId = familyId;
     }
 
     public String getId() {
@@ -34,12 +36,12 @@ public class FamilyUserEntity implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPass() {
@@ -48,5 +50,13 @@ public class FamilyUserEntity implements Serializable {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public String getFamilyId() {
+        return familyId;
+    }
+
+    public void setFamilyId(String familyId) {
+        this.familyId = familyId;
     }
 }
