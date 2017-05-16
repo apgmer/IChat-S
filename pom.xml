@@ -13,6 +13,7 @@
         <module>ichat-service</module>
         <module>ichat-web</module>
         <module>ichat-common</module>
+        <module>ichat-family</module>
     </modules>
 
     <properties>

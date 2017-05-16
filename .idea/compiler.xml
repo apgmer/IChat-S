@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ichat-api" />
         <module name="ichat-common" />
+        <module name="ichat-family" />
         <module name="ichat-service" />
         <module name="ichat-web" />
       </profile>
@@ -15,6 +16,8 @@
     <bytecodeTargetLevel>
       <module name="ichat-api" target="1.5" />
       <module name="ichat-common" target="1.5" />
+      <module name="ichat-family" target="1.5" />
+      <module name="ichat-mobile-api" target="1.5" />
       <module name="ichat-parent" target="1.5" />
       <module name="ichat-service" target="1.5" />
       <module name="ichat-web" target="1.5" />
