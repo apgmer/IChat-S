@@ -1,8 +1,8 @@
 package me.xiaotian.ichat.repository;
 
+import me.xiaotian.ichat.common.FAMILYROLE;
 import me.xiaotian.ichat.entity.FamilyRelaEntity;
 import me.xiaotian.ichat.entity.FamilyUserEntity;
-import me.xiaotian.ichat.entity.MemInfo;
 import me.xiaotian.ichat.service.FamilyRelaService;
 import me.xiaotian.ichat.service.FamilyUserService;
 import org.junit.Test;
@@ -33,28 +33,32 @@ public class FamilyUserRepositoryTest {
 
     @Test
     public void testMongo() throws Exception{
-        FamilyUserEntity u = new FamilyUserEntity();
-        u.setPhone("000000");
-        u.setPass("123123123123123");
-        familyUserRepository.save(u);
+        FamilyUserEntity familyUserEntity = new FamilyUserEntity();
+        familyUserEntity.setPhone("1234");
+        familyUserEntity.setPass("456789");
+        familyUserEntity.setNickname("儿子");
+        familyUserEntity.setRole(FAMILYROLE.SON);
+        familyUserRepository.save(familyUserEntity);
     }
 
     @Test
     public void testMogo2() throws Exception{
-        FamilyRelaEntity fre = new FamilyRelaEntity();
-        MemInfo memInfo = new MemInfo();
-        memInfo.setUid("591b0eee772e802fc4f2df51");
-        memInfo.setRole("妈妈");
-        Set<MemInfo> ms = new HashSet<MemInfo>();
-        ms.add(memInfo);
-        fre.setMems(ms);
-        familyRelaRepository.save(fre);
+        FamilyRelaEntity familyRelaEntity = new FamilyRelaEntity();
+        Set<String> s = new HashSet<String>();
+        s.add("591b9f8025ac35fb7884394d");
+        familyRelaEntity.setMems(s);
+        familyRelaRepository.save(familyRelaEntity);
     }
 
     @Test
     public void getRela() throws Exception{
         FamilyRelaEntity f = familyRelaRepository.findOne("591b0fc125ac53e2ff135941");
         System.out.println(f);
+    }
+
+    @Test
+    public void delTest() throws Exception{
+        familyUserRepository.delete("591b9f8025ac35fb7884394d");
     }
 
 }

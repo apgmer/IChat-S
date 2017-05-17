@@ -2,6 +2,7 @@ package me.xiaotian.ichat.service.impl;
 
 import me.xiaotian.ichat.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
@@ -15,7 +16,7 @@ import java.util.*;
 /**
  * Created by guoxiaotian on 2017/5/4.
  */
-
+@Primary
 @Service
 @com.alibaba.dubbo.config.annotation.Service
 public class RedisServiceImpl implements RedisService {

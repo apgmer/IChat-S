@@ -17,15 +17,19 @@ public class FamilyUserEntity implements Serializable {
     private String phone;
     private String pass;
     private String familyId;
+    private String role;
+    private String nickname;
 
     public FamilyUserEntity() {
     }
 
-    public FamilyUserEntity(String id, String phone, String pass, String familyId) {
+    public FamilyUserEntity(String id, String phone, String pass, String familyId, String role, String nickname) {
         this.id = id;
         this.phone = phone;
         this.pass = pass;
         this.familyId = familyId;
+        this.role = role;
+        this.nickname = nickname;
     }
 
     public String getId() {
@@ -58,5 +62,21 @@ public class FamilyUserEntity implements Serializable {
 
     public void setFamilyId(String familyId) {
         this.familyId = familyId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

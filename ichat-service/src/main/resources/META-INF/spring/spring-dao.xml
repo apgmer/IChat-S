@@ -28,6 +28,7 @@
     </bean>
 
     <mongo:repositories base-package="me.xiaotian.ichat" />
+
     <bean id="jedisConnFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
         <property name="usePool" value="true"/>
         <property name="hostName" value="${redis.host}" />
@@ -37,8 +38,18 @@
         <property name="database" value="${redis.default.db}"></property>
     </bean>
 
+    <bean id="jedisConnFactory2" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="usePool" value="true"/>
+        <property name="hostName" value="${redis.host}" />
+        <property name="port" value="${redis.port}" />
+        <property name="password" value="${redis.pass}" />
+        <property name="timeout" value="${redis.timeout}" />
+        <property name="database" value="${redis.regcode.db}"></property>
+    </bean>
     <!-- redis template definition -->
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" p:connection-factory-ref="jedisConnFactory"/>
+
+    <bean id="redisTemplate2" class="org.springframework.data.redis.core.RedisTemplate" p:connection-factory-ref="jedisConnFactory2"/>
 
 
 </beans>

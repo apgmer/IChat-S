@@ -16,7 +16,7 @@ import java.util.List;
  * Created by guoxiaotian on 2017/5/16.
  */
 @RestController
-@Secured("USER")
+//@Secured("USER")
 public class FamilyController {
 
 
