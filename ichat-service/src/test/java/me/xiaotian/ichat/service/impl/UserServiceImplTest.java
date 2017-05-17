@@ -20,16 +20,22 @@ import java.util.List;
  * Created by guoxiaotian on 2017/5/4.
  */
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:/META-INF/spring/spring-dao.xml"})
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = {"classpath:/META-INF/spring/spring-dao.xml"})
 public class UserServiceImplTest extends TestCase {
 
 
-    @Resource
-    private RedisService redisService;
+//    @Resource
+//    private RedisService redisService;
+//
+//    @Resource
+//    private UserService userService;
 
-    @Resource
-    private UserService userService;
+    @Test
+    public void testc() throws Exception{
+        int d = (int) (Math.random() * 9000 + 1000);
+        System.out.println(d);
+    }
 
 
 }

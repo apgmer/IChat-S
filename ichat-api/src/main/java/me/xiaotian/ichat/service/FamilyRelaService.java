@@ -3,6 +3,9 @@ package me.xiaotian.ichat.service;
 import me.xiaotian.ichat.entity.FamilyInfos;
 import me.xiaotian.ichat.entity.FamilyRelaEntity;
 import me.xiaotian.ichat.entity.FamilyUserEntity;
+import me.xiaotian.ichat.entity.FamilyUserWithStatus;
+
+import java.util.Set;
 
 /**
  * Created by guoxiaotian on 2017/5/16.
@@ -46,5 +49,12 @@ public interface FamilyRelaService {
      * @return
      */
     FamilyInfos getAllInfoById(String id);
+
+    /**
+     * 获取单个家庭的用户在线信息
+     * @param fid
+     * @return
+     */
+    Set<FamilyUserWithStatus> getUserAndStatusByFamily(String fid);
 
 }

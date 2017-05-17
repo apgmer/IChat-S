@@ -68,4 +68,10 @@ public interface FamilyUserService {
      */
     boolean delOne(String id);
 
+    /**
+     * 保持用户在线
+     * @param uid
+     * @return
+     */
+    boolean keepOnline(String uid);
 }

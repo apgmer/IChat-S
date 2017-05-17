@@ -1,19 +1,23 @@
 package me.xiaotian.ichat.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yunpian.sdk.YunpianClient;
 import com.yunpian.sdk.model.Result;
 import com.yunpian.sdk.model.SmsSingleSend;
 import me.xiaotian.ichat.entity.FamilyRelaEntity;
 import me.xiaotian.ichat.entity.FamilyUserEntity;
+import me.xiaotian.ichat.entity.UserEntity;
 import me.xiaotian.ichat.repository.FamilyRelaRepository;
 import me.xiaotian.ichat.repository.FamilyUserRepository;
 import me.xiaotian.ichat.service.FamilyUserService;
+import me.xiaotian.ichat.service.RedisService;
 import me.xiaotian.util.PasswordUtil;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -25,7 +29,7 @@ import static com.yunpian.sdk.constant.YunpianConstant.TEXT;
  * Created by guoxiaotian on 2017/5/16.
  */
 
-@Service
+@Service(timeout = 1200000)
 @org.springframework.stereotype.Service
 public class FamilyUserServiceImpl implements FamilyUserService {
 
@@ -39,6 +43,9 @@ public class FamilyUserServiceImpl implements FamilyUserService {
 
     @Resource
     private FamilyRelaRepository familyRelaRepository;
+
+    @Resource
+    private RedisService redisService;
 
     public boolean reg(FamilyUserEntity user, String regCode) {
 
@@ -61,13 +68,12 @@ public class FamilyUserServiceImpl implements FamilyUserService {
 
         String regCode;
         if (regCodeRedisService.exists(phone)) {
-            regCode = regCodeRedisService.get("phone");
+            regCode = regCodeRedisService.get(phone);
         } else {
             int d = (int) (Math.random() * 9000 + 1000);
             regCode = "" + d + "";
         }
-//        int d =(int) (Math.random() * 9000 + 1000);
-        regCodeRedisService.set(phone, regCode, 300);
+        regCodeRedisService.set(phone, regCode, 300000);
         YunpianClient client = new YunpianClient(YunPianApi).init();
         Map<String, String> param = client.newParam(2);
         param.put(MOBILE, phone);
@@ -143,6 +149,41 @@ public class FamilyUserServiceImpl implements FamilyUserService {
             return true;
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public boolean keepOnline(String uid) {
+        FamilyUserEntity userEntity = null;
+        if(redisService.exists(uid)){
+            userEntity = toEntity(redisService.get(uid));
+        }else {
+            userEntity = familyUserRepository.findOne(uid);
+        }
+        return this.saveUserToRedis(userEntity);
+    }
+
+    private boolean saveUserToRedis(FamilyUserEntity u){
+        try {
+            return redisService.set(u.getId(),toJson(u),300);
+        } catch (IOException e) {
+            redisService.delete(u.getId());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    private String toJson(Object object) throws IOException {
+        return new ObjectMapper().writeValueAsString(object);
+    }
+
+    private FamilyUserEntity toEntity(String jsonStr){
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(jsonStr,FamilyUserEntity.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

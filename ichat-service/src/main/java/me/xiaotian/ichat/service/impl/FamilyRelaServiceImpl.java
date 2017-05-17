@@ -1,12 +1,15 @@
 package me.xiaotian.ichat.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import me.xiaotian.ichat.common.USERSTATUS;
 import me.xiaotian.ichat.entity.FamilyInfos;
 import me.xiaotian.ichat.entity.FamilyRelaEntity;
 import me.xiaotian.ichat.entity.FamilyUserEntity;
+import me.xiaotian.ichat.entity.FamilyUserWithStatus;
 import me.xiaotian.ichat.repository.FamilyRelaRepository;
 import me.xiaotian.ichat.service.FamilyRelaService;
 import me.xiaotian.ichat.service.FamilyUserService;
+import me.xiaotian.ichat.service.RedisService;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -20,6 +23,9 @@ import java.util.Set;
 @Service
 @org.springframework.stereotype.Service
 public class FamilyRelaServiceImpl implements FamilyRelaService {
+
+    @Resource
+    private RedisService redisService;
 
     @Resource
     private FamilyRelaRepository familyRelaRepository;
@@ -61,13 +67,13 @@ public class FamilyRelaServiceImpl implements FamilyRelaService {
         mems.remove(memId);
         familyRelaEntity.setMems(mems);
 
-        if (null != familyRelaRepository.save(familyRelaEntity)){
-            if (familyUserService.delOne(memId)){
+        if (null != familyRelaRepository.save(familyRelaEntity)) {
+            if (familyUserService.delOne(memId)) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
     }
@@ -83,13 +89,33 @@ public class FamilyRelaServiceImpl implements FamilyRelaService {
     public FamilyInfos getAllInfoById(String id) {
         FamilyInfos familyInfos = new FamilyInfos();
         FamilyRelaEntity fre = familyRelaRepository.findOne(id);
+        if (null == fre) {
+            return null;
+        }
         Set<FamilyUserEntity> fus = new HashSet<FamilyUserEntity>();
-        for (String uid:fre.getMems()){
+        for (String uid : fre.getMems()) {
             FamilyUserEntity fu = familyUserService.findById(uid);
             fus.add(fu);
         }
         familyInfos.setId(fre.getId());
         familyInfos.setMems(fus);
         return familyInfos;
+    }
+
+    public Set<FamilyUserWithStatus> getUserAndStatusByFamily(String fid) {
+        FamilyInfos familyInfos = this.getAllInfoById(fid);
+        Set<FamilyUserWithStatus> set = new HashSet<FamilyUserWithStatus>();
+        for (FamilyUserEntity f : familyInfos.getMems()) {
+            FamilyUserWithStatus fu = new FamilyUserWithStatus();
+            fu.setFamilyUserEntity(f);
+            if (redisService.exists(f.getId())) {
+                fu.setStatus(USERSTATUS.ONLINE);
+            } else {
+                fu.setStatus(USERSTATUS.OFFLINE);
+            }
+            set.add(fu);
+
+        }
+        return set;
     }
 }
