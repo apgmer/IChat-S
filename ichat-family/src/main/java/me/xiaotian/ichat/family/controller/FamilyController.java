@@ -20,7 +20,7 @@ import java.util.List;
 public class FamilyController {
 
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
     @ResponseBody
     public String index(){
         return "hello world";
