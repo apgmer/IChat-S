@@ -97,6 +97,12 @@ public class FamilyUserServiceImpl implements FamilyUserService {
 
     public FamilyUserEntity login(FamilyUserEntity familyUserEntity) {
         FamilyUserEntity u = this.findByPhone(familyUserEntity.getPhone());
+        if (null == u){
+            return null;
+        }
+        if (redisService.exists(u.getId())){
+            return null;
+        }
         if (null != u) {
             if (PasswordUtil.isEqual(familyUserEntity.getPass(), u.getPass())) {
                 return u;
